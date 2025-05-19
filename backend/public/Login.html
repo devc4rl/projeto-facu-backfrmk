@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - EcoAção</title>
+    <link rel="stylesheet" href="login.css">
+    <script defer src="login.js"></script>
+</head>
+
+<body class="login-body">
+    <div class="form-container">
+        <h2>Entrar no EcoAção</h2>
+        <form id="loginForm" action="/login" method="POST">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="senha" placeholder="Senha" required>
+            <div class="botoes">
+                <button type="submit">Entrar</button>
+                <button type="button" onclick="limparCampos('loginForm')">Apagar</button>
+            </div>
+            <a class="link" href="Cadastro.html">Ainda não é um membro? Cadastre-se!</a>
+        </form>
+    </div>
+</body>
+</html>

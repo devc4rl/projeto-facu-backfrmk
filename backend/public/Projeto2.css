@@ -1,0 +1,254 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    color: #ffffff;
+    animation: fadeInBody 1.2s ease-in-out;
+  }
+
+  @keyframes fadeInBody{
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+
+  h1, h2, h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+  }
+
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  header {
+    background-color: #1d5b69;
+    padding: 1.5rem 0;
+    color: white;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  nav h1 {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  nav ul li a {
+    padding: 10px 16px;
+    margin: 0 2px;
+    border: 3px solid #bedacd;
+    color: #ffffff;
+    background-color: transparent;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+  }
+  
+  nav ul li a:hover {
+    background-color: #ffffff;
+    color: #369a31;
+    box-shadow: 0 0 8px rgba(49, 155, 54, 0.4);
+  }
+  
+  .hero {
+    background: linear-gradient(rgba(0, 50, 50, 0.5), rgba(0, 50, 50, 0.5)), url('destaque-header-desktop-noticia-Frontiers-2022.jpg') no-repeat center center/cover;
+    color: white;
+    padding: 8rem 2rem;
+    text-align: center;
+  }
+  
+  .hero-content {
+    max-width: 700px;
+    margin: 0 auto;
+    padding-top: 2%;
+    animation: slideFadeUp 1.2s ease-out both;
+    animation-delay: 3.0;
+  }
+
+
+  @keyframes slideFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+  
+  .hero-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+  
+  .cta-button {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.75rem 2rem;
+    background-color: #dae6ca;
+    color: rgb(109, 164, 82);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: background 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    background-color: #338438;
+    transform: scale(1.0);
+  }
+  
+  .info {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin: 4rem auto;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    background-color: lab(36.86% -13.99 -13.56);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 6px 12px #0b5c5c(16, 107, 93, 0.64);
+    flex: 1;
+    min-width: 280px;
+    text-align: center;
+  }
+  
+  .card h3 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  footer {
+    background-color: #1d5b69;
+    color: #ffffff;
+    text-align: center;
+    padding: 1.5rem;
+  }
+  
+
+/*cadastro*/
+
+  .form-section {
+  background-color: #1d5b69;
+  padding: 3rem;
+  margin: 3rem auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgb(255, 254, 254);
+  max-width: 700px;
+}
+
+.form-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #f3feff;
+}
+
+form label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.reset-button {
+  padding: 0.75rem 2rem;
+  background-color: #9e9e9e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.reset-button:hover {
+  background-color: #757575;
+}
+
+/*butão*/
+
+.cta-button {
+    padding: 12px 24px;
+    border: 3px solid #b1c8b2; 
+    background-color: transparent;
+    color: #29a68b;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+  
+  .cta-button:hover {
+    background-color: #ffffff;
+    color: #3f5242;
+    box-shadow: 0 0 10px rgba(37, 146, 41, 0.763);
+  }
+  
+ /* Botão de login */
+.login-btn {
+  background-color: white;
+  color: #2e7d32;
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background-color: #c8e6c9;
+}

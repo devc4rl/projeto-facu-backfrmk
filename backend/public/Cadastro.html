@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - EcoAção</title>
+    <link rel="stylesheet" href="Cadastro.css">
+    <script defer src="Cadastro.js"></script>
+</head>
+<body class="cadastro-body">
+    <div class="form-container">
+        <h2>Cadastre-se no EcoAção</h2>
+        <form id="cadastroForm" action="/cadastrar-usuario" method="POST">
+            <input type="text" name="nome" placeholder="Nome completo:" required>
+            <input type="email" name="email" placeholder="Email:" required>
+            <input type="password" name="senha" placeholder="Senha:" required>
+            <input type="password" name="confirmarSenha" placeholder="Confirmar senha:" required>
+            <div class="botoes">
+                <button type="submit">Cadastrar</button>
+                <button type="button" onclick="limparCampos('cadastroForm')">Apagar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

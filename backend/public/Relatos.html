@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Serviços - EcoAção</title>
+  <link rel="stylesheet" href="Projeto2.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+</head>
+<body>
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+  </script>
+
+  <header>
+    <nav class="container">
+      <h1>EcoAção</h1>
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="Ação.html">Ação</a></li>
+        <li><a href="Relatos.html">Relatos</a></li>
+        <li><a href="comunidade.html">Comunidade</a></li>
+      </ul>
+       <a href="login.html" class="login-btn">Login</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Outras seções de serviços aqui, se quiser -->
+
+    <!-- Seção de relatos e denúncias dentro dos serviços -->
+    <section class="form-section" data-aos="fade-up">
+      <h2>Enviar Relato ou Denúncia</h2>
+      <form id="relatoForm" action="/enviar-relato" method="POST">
+        <label for="descricao">Descrição</label><br />
+        <textarea id="descricao" name="descricao" rows="4" required placeholder="Descreva o que aconteceu..."></textarea><br />
+
+        <label for="localizacao">Localização</label><br />
+        <input type="text" id="localizacao" name="localizacao" placeholder="Ex: Bairro, cidade..." required /><br />
+
+        <label for="gravidade">Gravidade</label><br />
+        <select id="gravidade" name="gravidade" required>
+          <option value="">Selecione</option>
+          <option value="baixa">Baixa</option>
+          <option value="media">Média</option>
+          <option value="alta">Alta</option>
+        </select><br />
+
+        <label for="arquivo">Imagem ou Vídeo (opcional)</label><br />
+        <input type="file" id="arquivo" name="arquivo" accept="image/*,video/*" /><br />
+
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+
+    <section class="feed-section" data-aos="fade-up" data-aos-delay="150">
+      <h2>Feed de Relatos e Denúncias</h2>
+      <div id="feed">
+        <!-- Os relatos aparecerão aqui via JS -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 EcoAção. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    const feed = document.getElementById('feed');
+    const form = document.getElementById('relatoForm');
+
+    function criarCard(relato) {
+      const card = document.createElement('div');
+      card.className = 'relato-card';
+      card.setAttribute('data-aos', 'fade-up');
+
+      let corGravidade;
+      switch(relato.gravidade) {
+        case 'baixa': corGravidade = 'green'; break;
+        case 'media': corGravidade = 'orange'; break;
+        case 'alta': corGravidade = 'red'; break;
+        default: corGravidade = 'gray';
+      }
+
+      card.innerHTML = `
+        <p><strong>Descrição:</strong> ${relato.descricao}</p>
+        <p><strong>Localização:</strong> ${relato.localizacao}</p>
+        <p><strong>Gravidade:</strong> <span style="color:${corGravidade}; font-weight:bold;">${relato.gravidade.toUpperCase()}</span></p>
+        ${relato.midia ? relato.midia : ''}
+        <p><small>Enviado em: ${new Date(relato.data).toLocaleString()}</small></p>
+      `;
+
+      return card;
+    }
+
+    function carregarRelatos() {
+      const relatos = JSON.parse(localStorage.getItem('relatosEcoacao')) || [];
+      feed.innerHTML = '';
+      relatos.forEach(relato => {
+        const card = criarCard(relato);
+        feed.appendChild(card);
+      });
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const descricao = form.descricao.value.trim();
+      const localizacao = form.localizacao.value.trim();
+      const gravidade = form.gravidade.value;
+      const arquivoInput = form.arquivo;
+
+      function criarMidia(file) {
+        if (!file) return '';
+
+        const url = URL.createObjectURL(file);
+        if (file.type.startsWith('image/')) {
+          return `<img src="${url}" alt="Imagem do relato" style="max-width:100%; margin-top:10px; border-radius:8px;" />`;
+        } else if (file.type.startsWith('video/')) {
+          return `<video controls style="max-width:100%; margin-top:10px; border-radius:8px;"><source src="${url}" type="${file.type}">Seu navegador não suporta vídeo.</video>`;
+        }
+        return '';
+      }
+
+      const midia = criarMidia(arquivoInput.files[0]);
+
+      const novoRelato = {
+        descricao,
+        localizacao,
+        gravidade,
+        midia,
+        data: new Date().toISOString()
+      };
+
+      const relatos = JSON.parse(localStorage.getItem('relatosEcoacao')) || [];
+      relatos.unshift(novoRelato);
+      localStorage.setItem('relatosEcoacao', JSON.stringify(relatos));
+
+      carregarRelatos();
+
+      form.reset();
+    });
+
+    carregarRelatos();
+  </script>
+
+  <style>
+    /* Estilos básicos para a seção, você pode ajustar conforme seu Projeto2.css */
+    main.container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .form-section {
+      background: rgb(37, 103, 122);
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgb(0 0 0 / 0.1);
+      margin-bottom: 2rem;
+    }
+    form label {
+      font-weight: 600;
+      margin-top: 1rem;
+      display: block;
+    }
+    form input[type="text"],
+    form select,
+    form textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.3rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    form button {
+      margin-top: 1rem;
+      background: #fffafa;
+      color: rgb(0, 0, 0);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    form button:hover {
+      background: hsl(0, 0%, 100%);
+    }
+    .feed-section h2 {
+      margin-bottom: 1rem;
+    }
+    .relato-card {
+      background: white;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+    }
+    .relato-card p {
+      margin: 0.5rem 0;
+    }
+  </style>
+</body>
+</html>

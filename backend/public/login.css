@@ -1,0 +1,66 @@
+/* estilo.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #ffffff, #81c784);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-container {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    width: 300px;
+    text-align: center;
+}
+
+input {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.botoes button {
+    padding: 10px 20px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.botoes button[type="submit"] {
+    background-color: #388e3c;
+    color: white;
+}
+
+.botoes button[type="button"] {
+    background-color: #e57373;
+    color: white;
+}
+
+.link {
+    display: block;
+    margin-top: 15px;
+    color: #388e3c;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.link:hover {
+    text-decoration: underline;
+
+    
+}
+
+
+

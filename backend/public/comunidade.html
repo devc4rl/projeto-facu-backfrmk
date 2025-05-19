@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>comunidade - EcoAção</title>
+  <link rel="stylesheet" href="comunidade.css" />
+  
+</head> 
+
+<!-- Modal de Doação -->
+<div class="modal-doacao" id="modalDoacao">
+    <div class="modal-conteudo">
+        <h3>Fazer Doação</h3>
+        <input type="number" id="valorDoacao" placeholder="Digite o valor em R$">
+        <button onclick="confirmarDoacao()">Doar</button>
+        <button class="fechar" onclick="fecharModal()">Cancelar</button>
+    </div>
+</div>
+
+<!-- Mensagem de sucesso -->
+<div id="mensagemAgradecimento" class="mensagem-agradecimento">Obrigado pela contribuição!</div>
+
+<body>
+    <header>
+    <nav class="container">
+      <h1>EcoAção</h1>
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="Ação.html">Cadastro</a></li>
+        <li><a href="Relatos.html">Relatos</a></li>
+        <li><a href="comunidade.html">Comunidade</a></li>
+      </ul>
+       <a href="login.html" class="login-btn">Login</a>
+    </nav>
+  </header>
+
+    <main>
+        <div class="post denuncia">
+            <h2>Denúncia: Lixo em terreno baldio</h2>
+            <img src="lixo.jpg"  alt="Imagem da denúncia" class="card-img">
+            <p><strong>Descrição:</strong> Lixo acumulado próximo à escola do bairro.</p>
+            <p><strong>Gravidade:</strong> Alta | <strong>Status:</strong> Não resolvido</p>
+            <div class="comentarios">
+                <input type="text" placeholder="Comente aqui...">
+                <button onclick="comentar(this)">Comentar</button>
+                <ul></ul>
+            </div>
+        </div>
+
+        <div class="post acao-social">
+            <h2>Ação Social: Mutirão de limpeza no Parque Central</h2>
+            <img src="Limpeza.jpg"  alt="Imagem da Ação" class="card-img">
+            <p><strong>Descrição:</strong> Grupo de voluntários irá realizar limpeza geral no parque neste sábado às 9h.</p>
+            <p><strong>Organização:</strong> Jovens Verdes</p>
+            <button class="doar" onclick="doar()">Fazer doação</button>
+            <div class="comentarios">
+                <input type="text" placeholder="Comente aqui...">
+                <button onclick="comentar(this)">Comentar</button>
+                <ul></ul>
+            </div>
+        </div>
+    </main>
+
+    <script src="comunidade.js"></script>
+
+    
+</body>
+
+</html>

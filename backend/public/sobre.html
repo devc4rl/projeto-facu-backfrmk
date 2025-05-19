@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sobre - EcoAção</title>
+  <link rel="stylesheet" href="Projeto2.css" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    .sobre-section {
+      padding: 4rem 2rem;
+      background-color: #e8f2f5;
+    }
+
+    .sobre-section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #20676d;
+      margin-bottom: 2rem;
+    }
+
+    .sobre-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .sobre-card {
+      flex: 1 1 300px;
+      background-color: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .sobre-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .sobre-card h3 {
+      color: #20676d;
+      margin-bottom: 1rem;
+    }
+
+    .sobre-card p {
+      line-height: 1.6;
+      color: #424242;
+    }
+
+    .sobre-cta {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .sobre-image {
+  width: 100%;
+  height: 200px; /* ou ajuste conforme seu layout */
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <h1>EcoAção</h1>
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="Ação.html">Ação</a></li>
+        <li><a href="Relatos.html">Relatos</a></li>
+        <li><a href="comunidade.html">Comunidade</a></li>
+      </ul>
+      <a href="login.html" class="login-btn">Login</a>
+    </nav>
+  </header>
+
+  <section class="sobre-section" data-aos="fade-up">
+    <h2 data-aos="fade-down">Quem Somos</h2>
+    <div class="sobre-grid container">
+      <div class="sobre-card" data-aos="zoom-in" data-aos-delay="100">
+        <img src="missao.jpg" alt="Nossa Missão" class="sobre-image">
+        <h3>🌱 Nossa Missão</h3>
+        <p>Mobilizar ações que reduzam os impactos ambientais, promovendo a sustentabilidade e a conscientização sobre as mudanças climáticas.</p>
+      </div>
+      <div class="sobre-card" data-aos="zoom-in" data-aos-delay="200">
+        <img src="estufa.jpg" alt="Compromisso com o Futuro" class="sobre-image">
+        <h3>🌍 Compromisso com o Futuro</h3>
+        <p>Estamos comprometidos com práticas ecológicas, transparência e impacto social positivo através da união de comunidades e empresas.</p>
+      </div>
+      <div class="sobre-card" data-aos="zoom-in" data-aos-delay="300">
+        <img src="ajuda.jpg" alt="Junte-se a Nós" class="sobre-image">
+        <h3>🤝 Junte-se a Nós</h3>
+        <p>Você pode cadastrar sua iniciativa, divulgar serviços sustentáveis ou apoiar quem já está agindo. Cada passo conta para um planeta melhor.</p>
+      </div>
+    </div>
+    <div class="sobre-cta" data-aos="fade-up" data-aos-delay="400">
+      <a href="cadastro.html" class="cta-button">Cadastre sua Ação</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 EcoAção. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- AOS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+</body>
+</html>

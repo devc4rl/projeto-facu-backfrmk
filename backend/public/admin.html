@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Gerenciar Ações</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <header>
+        <h1>Painel Administrativo</h1>
+        <nav>
+            <a href="/">Voltar ao Site</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Lista de Ações Climáticas</h2>
+        <div id="lista-acoes">
+            <p>Carregando ações...</p>
+        </div>
+    </main>
+
+    <script>
+        function excluirAcao(acaoId) {
+            if (confirm(`Tem certeza que deseja excluir a ação com ID ${acaoId}?`)) {
+                fetch(`/admin/excluir-acao/${acaoId}`, {
+                    method: 'DELETE',
+                })
+                .then(response => response.text())
+                .then(message => {
+                    alert(message);
+                    carregarAcoesAdmin(); // Recarrega a lista de ações após a exclusão
+                })
+                .catch(error => {
+                    console.error('Erro ao excluir ação:', error);
+                    alert('Erro ao excluir a ação.');
+                });
+            }
+        }
+
+        function carregarAcoesAdmin() {
+            fetch('/admin/acoes-data')
+                .then(response => response.json())
+                .then(acoes => {
+                    const listaAcoesDiv = document.getElementById('lista-acoes');
+                    listaAcoesDiv.innerHTML = '';
+                    if (acoes.length === 0) {
+                        listaAcoesDiv.innerHTML = '<p>Nenhuma ação cadastrada.</p>';
+                        return;
+                    }
+                    acoes.forEach(acao => {
+                        const acaoDiv = document.createElement('div');
+                        acaoDiv.classList.add('acao-item');
+                        acaoDiv.innerHTML = `
+                            <h3>${acao.nome}</h3>
+                            <p><strong>Descrição:</strong> ${acao.descricao}</p>
+                            <p><strong>Valor Estimado:</strong> R$ ${acao.valor ? acao.valor.toFixed(2) : 'Não informado'}</p>
+                            <button onclick="excluirAcao(${acao.id})">Excluir</button>
+                        `;
+                        listaAcoesDiv.appendChild(acaoDiv);
+                    });
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar ações:', error);
+                    document.getElementById('lista-acoes').innerHTML = '<p>Erro ao carregar as ações.</p>';
+                });
+        }
+
+        window.onload = carregarAcoesAdmin;
+    </script>
+</body>
+</html>
